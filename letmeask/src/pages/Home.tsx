@@ -39,6 +39,11 @@ export function Home() {
       return;
     }
 
+    if (roomRef.val().endedAt) {
+      alert('Room already closed.');
+      return;
+    }
+
     history.push(`/rooms/${roomCode}`);
   }
 
@@ -58,7 +63,7 @@ export function Home() {
           </button>
           <div className="separator">ou entre em uma sala</div>
           <form onSubmit={handleJoinRoom}>
-            <input
+            <input 
               type="text"
               placeholder="Digite o código da sala"
               onChange={event => setRoomCode(event.target.value)}
